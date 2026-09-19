@@ -14,18 +14,17 @@ const restartBtn =
 
 yesBtn.addEventListener("click", function () {
 
+    document.getElementById("proposal").style.display = "none";
+
     successScreen.style.display = "flex";
 
-    // Celebration hearts
     for (let i = 0; i < 50; i++) {
-
         setTimeout(() => {
             createHeart();
         }, i * 80);
-
     }
-
 });
+
 
 
 // ============================
