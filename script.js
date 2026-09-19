@@ -26,29 +26,25 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
 
-    // =========================
-    // NO BUTTON
-    // =========================
+// =========================
+// NO BUTTON - HOVER
+// =========================
 
- function moveNoButton() {
+noBtn.addEventListener("mouseenter", function () {
+
+    const maxX = 200;
+    const maxY = 120;
 
     const x =
-        Math.random() * 200 - 100;
+        Math.random() * (maxX * 2) - maxX;
 
     const y =
-        Math.random() * 120 - 60;
+        Math.random() * (maxY * 2) - maxY;
 
     noBtn.style.transform =
         `translate(${x}px, ${y}px)`;
-}
 
-
-// Desktop
-noBtn.addEventListener(
-    "mouseenter",
-    moveNoButton
-);
-
+});
 
     // =========================
     // START AGAIN
