@@ -1,142 +1,142 @@
-/* ==================================
-   OPENING SCREEN
-================================== */
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
 
-const opening = document.getElementById("opening");
+const successScreen =
+    document.getElementById("successScreen");
 
-const mainContent = document.getElementById("mainContent");
+const restartBtn =
+    document.getElementById("restartBtn");
 
-// Wait for the opening animation
 
-setTimeout(() => {
-  opening.classList.add("hide");
+// ============================
+// YES BUTTON
+// ============================
 
-  mainContent.classList.add("show");
-}, 5000);
+yesBtn.addEventListener("click", function () {
 
-/* ==================================
-   TYPING MESSAGE
-================================== */
+    successScreen.style.display = "flex";
 
-const text = "I wanted to tell you something...  ❤️";
+    // Celebration hearts
+    for (let i = 0; i < 50; i++) {
 
-const message = document.getElementById("message");
+        setTimeout(() => {
+            createHeart();
+        }, i * 80);
 
-let index = 0;
+    }
 
-function typeText() {
-  if (index < text.length) {
-    message.innerHTML =
-      text.substring(0, index + 1) + '<span class="cursor">|</span>';
+});
 
-    index++;
 
-    setTimeout(typeText, 45);
-  } else {
-    message.innerHTML = text;
-  }
+// ============================
+// NO BUTTON
+// ============================
+
+function moveNoButton() {
+
+    const x =
+        Math.random() * 250 - 125;
+
+    const y =
+        Math.random() * 150 - 75;
+
+    noBtn.style.transform =
+        `translate(${x}px, ${y}px)`;
 }
 
-// Start typing after opening
 
-setTimeout(() => {
-  typeText();
-}, 5300);
+// Desktop
+noBtn.addEventListener(
+    "mouseenter",
+    moveNoButton
+);
 
-/* ==================================
-   SURPRISE BUTTON
-================================== */
 
-function showSurprise() {
-  const surprise = document.getElementById("surprise");
+// Mobile
+noBtn.addEventListener(
+    "touchstart",
+    function (event) {
 
-  surprise.style.display = "block";
+        event.preventDefault();
 
-  // Create lots of hearts
+        moveNoButton();
 
-  createHearts(40);
+    }
+);
 
-  // Change button text
 
-  const button = document.querySelector("button");
-
-  button.innerHTML = "You found it ❤️";
-
-  button.style.background = "linear-gradient(135deg, #ffb6c9, #ffffff)";
-
-  // Scroll to message
-
-  setTimeout(() => {
-    surprise.scrollIntoView({
-      behavior: "smooth",
-
-      block: "center",
-    });
-  }, 200);
-}
-
-/* ==================================
-   FLOATING HEART
-================================== */
+// ============================
+// FLOATING HEARTS
+// ============================
 
 function createHeart() {
-  const heart = document.createElement("div");
 
-  heart.className = "floating-heart";
+    const heart =
+        document.createElement("div");
 
-  const hearts = ["❤️", "💕", "💖", "💗", "💘", "💝", "💓", "🥰"];
+    heart.classList.add(
+        "floating-heart"
+    );
 
-  heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+    const hearts = [
+        "❤️",
+        "💕",
+        "💖",
+        "💗",
+        "💘",
+        "💓"
+    ];
 
-  heart.style.left = Math.random() * 100 + "vw";
+    heart.innerHTML =
+        hearts[
+            Math.floor(
+                Math.random() *
+                hearts.length
+            )
+        ];
 
-  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    heart.style.left =
+        Math.random() * 100 + "vw";
 
-  heart.style.animationDuration = Math.random() * 4 + 5 + "s";
+    heart.style.fontSize =
+        20 + Math.random() * 35 + "px";
 
-  document.body.appendChild(heart);
+    heart.style.animationDuration =
+        3 + Math.random() * 4 + "s";
 
-  setTimeout(() => {
-    heart.remove();
-  }, 9000);
-}
+    document.body.appendChild(heart);
 
-// Normal floating hearts
 
-setInterval(createHeart, 800);
-
-/* ==================================
-   MULTIPLE HEARTS
-================================== */
-
-function createHearts(amount) {
-  for (let i = 0; i < amount; i++) {
     setTimeout(() => {
-      createHeart();
-    }, i * 80);
-  }
+
+        heart.remove();
+
+    }, 7000);
+
 }
 
-/* ==================================
-   SPARKLES
-================================== */
 
-function createSparkle() {
-  const sparkle = document.createElement("div");
+// Create hearts continuously
 
-  sparkle.className = "sparkle";
+setInterval(
+    createHeart,
+    500
+);
 
-  sparkle.style.left = Math.random() * 100 + "vw";
 
-  sparkle.style.top = Math.random() * 100 + "vh";
+// ============================
+// RESTART
+// ============================
 
-  sparkle.style.animationDelay = Math.random() * 2 + "s";
+restartBtn.addEventListener(
+    "click",
+    function () {
 
-  document.body.appendChild(sparkle);
+        successScreen.style.display =
+            "none";
 
-  setTimeout(() => {
-    sparkle.remove();
-  }, 2500);
-}
+        noBtn.style.transform =
+            "translate(0, 0)";
 
-setInterval(createSparkle, 500);
+    }
+);
