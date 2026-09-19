@@ -30,18 +30,24 @@ document.addEventListener("DOMContentLoaded", function () {
     // NO BUTTON
     // =========================
 
-    noBtn.onclick = function () {
+ function moveNoButton() {
 
-        const x =
-            Math.random() * 250 - 125;
+    const x =
+        Math.random() * 200 - 100;
 
-        const y =
-            Math.random() * 150 - 75;
+    const y =
+        Math.random() * 120 - 60;
 
-        noBtn.style.transform =
-            `translate(${x}px, ${y}px)`;
+    noBtn.style.transform =
+        `translate(${x}px, ${y}px)`;
+}
 
-    };
+
+// Desktop
+noBtn.addEventListener(
+    "mouseenter",
+    moveNoButton
+);
 
 
     // =========================
