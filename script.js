@@ -1,11 +1,10 @@
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 
-const successScreen =
-    document.getElementById("successScreen");
+const proposal = document.getElementById("proposal");
+const success = document.getElementById("success");
 
-const restartBtn =
-    document.getElementById("restartBtn");
+const restartBtn = document.getElementById("restartBtn");
 
 
 // ============================
@@ -14,17 +13,15 @@ const restartBtn =
 
 yesBtn.addEventListener("click", function () {
 
-    document.getElementById("proposal").style.display = "none";
+    console.log("YES clicked!");
 
-    successScreen.style.display = "flex";
+    // Hide proposal
+    proposal.style.display = "none";
 
-    for (let i = 0; i < 50; i++) {
-        setTimeout(() => {
-            createHeart();
-        }, i * 80);
-    }
+    // Show success
+    success.hidden = false;
+
 });
-
 
 
 // ============================
@@ -34,10 +31,10 @@ yesBtn.addEventListener("click", function () {
 function moveNoButton() {
 
     const x =
-        Math.random() * 250 - 125;
+        Math.random() * 200 - 100;
 
     const y =
-        Math.random() * 150 - 75;
+        Math.random() * 120 - 60;
 
     noBtn.style.transform =
         `translate(${x}px, ${y}px)`;
@@ -65,77 +62,19 @@ noBtn.addEventListener(
 
 
 // ============================
-// FLOATING HEARTS
+// START AGAIN
 // ============================
 
-function createHeart() {
+restartBtn.addEventListener("click", function () {
 
-    const heart =
-        document.createElement("div");
+    // Hide success
+    success.hidden = true;
 
-    heart.classList.add(
-        "floating-heart"
-    );
+    // Show proposal
+    proposal.style.display = "flex";
 
-    const hearts = [
-        "❤️",
-        "💕",
-        "💖",
-        "💗",
-        "💘",
-        "💓"
-    ];
+    // Reset No button
+    noBtn.style.transform =
+        "translate(0, 0)";
 
-    heart.innerHTML =
-        hearts[
-            Math.floor(
-                Math.random() *
-                hearts.length
-            )
-        ];
-
-    heart.style.left =
-        Math.random() * 100 + "vw";
-
-    heart.style.fontSize =
-        20 + Math.random() * 35 + "px";
-
-    heart.style.animationDuration =
-        3 + Math.random() * 4 + "s";
-
-    document.body.appendChild(heart);
-
-
-    setTimeout(() => {
-
-        heart.remove();
-
-    }, 7000);
-
-}
-
-
-// Create hearts continuously
-
-setInterval(
-    createHeart,
-    500
-);
-
-
-// ============================
-// RESTART
-// ============================
-
-restartBtn.addEventListener(
-    "click",
-    function () {
-
-        successScreen.style.display =
-            "none";
-
-        noBtn.style.transform =
-            "translate(0, 0)";
-
-    }
-);
+});
