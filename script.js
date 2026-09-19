@@ -19,7 +19,7 @@ yesBtn.addEventListener("click", function () {
     proposal.style.display = "none";
 
     // Show success
-    success.hidden = false;
+    success.hidden = true;
 
 });
 
