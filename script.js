@@ -1,80 +1,62 @@
-const yesBtn = document.getElementById("yesBtn");
-const noBtn = document.getElementById("noBtn");
+document.addEventListener("DOMContentLoaded", function () {
 
-const proposal = document.getElementById("proposal");
-const success = document.getElementById("success");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
 
-const restartBtn = document.getElementById("restartBtn");
+    const proposal = document.getElementById("proposal");
+    const success = document.getElementById("success");
 
-
-// ============================
-// YES BUTTON
-// ============================
-
-yesBtn.addEventListener("click", function () {
-
-    console.log("YES clicked!");
-
-    // Hide proposal
-    proposal.style.display = "none";
-
-    // Show success
-    success.hidden = false;
-
-});
+    const restartBtn = document.getElementById("restartBtn");
 
 
-// ============================
-// NO BUTTON
-// ============================
+    // =========================
+    // YES BUTTON
+    // =========================
 
-function moveNoButton() {
+    yesBtn.onclick = function () {
 
-    const x =
-        Math.random() * 200 - 100;
+        console.log("YES BUTTON WORKING!");
 
-    const y =
-        Math.random() * 120 - 60;
+        // Hide proposal
+        proposal.style.display = "none";
 
-    noBtn.style.transform =
-        `translate(${x}px, ${y}px)`;
-}
+        // Show success
+        success.style.display = "flex";
 
-
-// Desktop
-noBtn.addEventListener(
-    "mouseenter",
-    moveNoButton
-);
+    };
 
 
-// Mobile
-noBtn.addEventListener(
-    "touchstart",
-    function (event) {
+    // =========================
+    // NO BUTTON
+    // =========================
 
-        event.preventDefault();
+    noBtn.onclick = function () {
 
-        moveNoButton();
+        const x =
+            Math.random() * 250 - 125;
 
-    }
-);
+        const y =
+            Math.random() * 150 - 75;
+
+        noBtn.style.transform =
+            `translate(${x}px, ${y}px)`;
+
+    };
 
 
-// ============================
-// START AGAIN
-// ============================
+    // =========================
+    // START AGAIN
+    // =========================
 
-restartBtn.addEventListener("click", function () {
+    restartBtn.onclick = function () {
 
-    // Hide success
-    success.hidden = true;
+        success.style.display = "none";
 
-    // Show proposal
-    proposal.style.display = "flex";
+        proposal.style.display = "flex";
 
-    // Reset No button
-    noBtn.style.transform =
-        "translate(0, 0)";
+        noBtn.style.transform =
+            "translate(0, 0)";
+
+    };
 
 });
