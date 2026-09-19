@@ -4,15 +4,9 @@
     box-sizing: border-box;
 }
 
-
-/* =========================
-   BODY
-========================= */
-
 body {
     width: 100%;
     min-height: 100vh;
-
     overflow: hidden;
 
     font-family: Arial, sans-serif;
@@ -26,15 +20,8 @@ body {
 }
 
 
-/* VERY IMPORTANT */
-
-[hidden] {
-    display: none !important;
-}
-
-
 /* =========================
-   PROPOSAL PAGE
+   PROPOSAL
 ========================= */
 
 #proposal {
@@ -42,7 +29,6 @@ body {
     height: 100vh;
 
     display: flex;
-
     justify-content: center;
     align-items: center;
 }
@@ -55,10 +41,9 @@ body {
     padding: 45px 35px;
 
     text-align: center;
-
     color: white;
 
-    background: rgba(50, 0, 40, 0.35);
+    background: rgba(50, 0, 40, 0.4);
 
     border-radius: 30px;
 
@@ -69,13 +54,12 @@ body {
 }
 
 
-/* Heart */
-
 .big-heart {
-    font-size: 85px;
+    font-size: 80px;
 
     animation: heartbeat 1.2s infinite;
 }
+
 
 @keyframes heartbeat {
 
@@ -90,14 +74,10 @@ body {
 }
 
 
-/* Proposal text */
-
 .card h1 {
     margin: 20px 0;
 
     font-size: 50px;
-
-    color: white;
 }
 
 .card p {
@@ -112,8 +92,6 @@ body {
     margin: 25px 0;
 
     color: #ffd1df;
-
-    font-size: 23px;
 }
 
 
@@ -141,12 +119,11 @@ button {
     border-radius: 50px;
 
     font-size: 17px;
-
     font-weight: bold;
 
     cursor: pointer;
 
-    transition: 0.3s ease;
+    transition: 0.3s;
 }
 
 
@@ -174,16 +151,13 @@ button {
 }
 
 
-#noBtn:hover {
-    transform: scale(1.05);
-}
-
-
 /* =========================
-   SUCCESS PAGE
+   SUCCESS
 ========================= */
 
 #success {
+    display: none;
+
     position: fixed;
 
     inset: 0;
@@ -192,8 +166,6 @@ button {
     height: 100vh;
 
     z-index: 9999;
-
-    display: flex;
 
     justify-content: center;
     align-items: center;
@@ -258,8 +230,6 @@ button {
     margin: 20px 0;
 
     font-size: 52px;
-
-    color: white;
 }
 
 
@@ -278,8 +248,6 @@ button {
     color: #ffd1df;
 }
 
-
-/* Restart */
 
 #restartBtn {
     margin-top: 30px;
@@ -310,7 +278,7 @@ button {
     }
 
     .big-heart {
-        font-size: 65px;
+        font-size: 60px;
     }
 
     .card h1,
@@ -321,14 +289,6 @@ button {
     .card p,
     .success-card p {
         font-size: 16px;
-    }
-
-    .buttons {
-        gap: 10px;
-    }
-
-    button {
-        padding: 13px 24px;
     }
 
     .ring {
