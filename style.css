@@ -4,75 +4,83 @@
     box-sizing: border-box;
 }
 
-body {
-    min-height: 100vh;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* =========================
+   BODY
+========================= */
+
+body {
+    width: 100%;
+    min-height: 100vh;
 
     overflow: hidden;
 
     font-family: Arial, sans-serif;
 
     background:
-        linear-gradient(
-            135deg,
-            #ff758c,
-            #ff7eb3,
-            #ff9a9e
+        radial-gradient(
+            circle at top,
+            #ff8fab,
+            #3a002d 70%
         );
 }
 
-/* Proposal Card */
 
-.proposal-card {
+/* VERY IMPORTANT */
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* =========================
+   PROPOSAL PAGE
+========================= */
+
+#proposal {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+
+.card {
     width: 90%;
-    max-width: 550px;
+    max-width: 600px;
 
-    padding: 45px 30px;
+    padding: 45px 35px;
 
     text-align: center;
 
-    background: rgba(255, 255, 255, 0.95);
+    color: white;
+
+    background: rgba(50, 0, 40, 0.35);
 
     border-radius: 30px;
 
+    backdrop-filter: blur(10px);
+
     box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.25);
-
-    position: relative;
-
-    z-index: 10;
-
-    animation: cardAppear 1s ease;
+        0 20px 60px rgba(0, 0, 0, 0.35);
 }
 
-@keyframes cardAppear {
-
-    from {
-        opacity: 0;
-        transform: scale(0.7);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
 
 /* Heart */
 
-.heart {
-    font-size: 80px;
+.big-heart {
+    font-size: 85px;
 
-    animation:
-        heartbeat 1.2s infinite;
+    animation: heartbeat 1.2s infinite;
 }
 
 @keyframes heartbeat {
 
-    0%, 100% {
+    0%,
+    100% {
         transform: scale(1);
     }
 
@@ -81,54 +89,56 @@ body {
     }
 }
 
-/* Text */
 
-h1 {
-    margin-top: 15px;
+/* Proposal text */
 
-    color: #ff3366;
-
-    font-size: 40px;
-}
-
-h2 {
-    margin-bottom: 30px;
-
-    color: #ff3366;
-
-    font-size: 22px;
-}
-
-.message {
+.card h1 {
     margin: 20px 0;
 
-    color: #555;
+    font-size: 50px;
 
-    font-size: 17px;
-
-    line-height: 1.7;
+    color: white;
 }
 
-/* Buttons */
+.card p {
+    margin: 12px 0;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+}
+
+.card h2 {
+    margin: 25px 0;
+
+    color: #ffd1df;
+
+    font-size: 23px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
 
 .buttons {
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 
     gap: 20px;
 
-    min-height: 60px;
+    margin-top: 25px;
 }
+
 
 button {
     border: none;
 
-    padding: 14px 30px;
+    padding: 15px 32px;
 
-    border-radius: 30px;
+    border-radius: 50px;
 
     font-size: 17px;
 
@@ -136,8 +146,9 @@ button {
 
     cursor: pointer;
 
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
+
 
 #yesBtn {
     color: white;
@@ -145,8 +156,9 @@ button {
     background: #ff3366;
 
     box-shadow:
-        0 8px 20px rgba(255, 51, 102, 0.4);
+        0 8px 25px rgba(255, 51, 102, 0.4);
 }
+
 
 #yesBtn:hover {
     transform: scale(1.1);
@@ -154,82 +166,81 @@ button {
     background: #e91e56;
 }
 
+
 #noBtn {
-    color: #555;
+    color: #ff3366;
 
-    background: #eeeeee;
-
-    position: relative;
+    background: white;
 }
 
-/* Success Screen */
 
-.success-screen {
-    display: none;
+#noBtn:hover {
+    transform: scale(1.05);
+}
 
+
+/* =========================
+   SUCCESS PAGE
+========================= */
+
+#success {
     position: fixed;
-    top: 0;
-    left: 0;
+
+    inset: 0;
 
     width: 100%;
     height: 100vh;
 
-    z-index: 100;
+    z-index: 9999;
+
+    display: flex;
 
     justify-content: center;
     align-items: center;
 
     text-align: center;
 
-    background: linear-gradient(
-        135deg,
-        #ff416c,
-        #ff4b2b
-    );
-}
-
-
-.success-content {
-    width: 90%;
-    max-width: 550px;
-
-    padding: 45px 30px;
-
     color: white;
 
-    animation: successAppear 1s ease;
+    background:
+        radial-gradient(
+            circle at top,
+            #ff8fab,
+            #3a002d 70%
+        );
 }
 
-@keyframes successAppear {
+
+.success-card {
+    width: 90%;
+    max-width: 650px;
+
+    padding: 40px;
+
+    animation: successAnimation 0.8s ease;
+}
+
+
+@keyframes successAnimation {
 
     from {
         opacity: 0;
-        transform: translateY(50px);
+        transform: scale(0.5);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: scale(1);
     }
 }
 
-.success-content h1 {
-    color: white;
-
-    margin: 20px 0;
-}
-
-.success-content p {
-    font-size: 19px;
-
-    line-height: 1.7;
-}
 
 .ring {
-    font-size: 90px;
+    font-size: 100px;
 
-    animation: ringAnimation 1.5s infinite alternate;
+    animation: ringAnimation 1.2s infinite alternate;
 }
+
 
 @keyframes ringAnimation {
 
@@ -238,9 +249,37 @@ button {
     }
 
     to {
-        transform: rotate(10deg) scale(1.2);
+        transform: rotate(10deg) scale(1.15);
     }
 }
+
+
+.success-card h1 {
+    margin: 20px 0;
+
+    font-size: 52px;
+
+    color: white;
+}
+
+
+.success-card p {
+    margin: 15px 0;
+
+    font-size: 20px;
+
+    line-height: 1.7;
+}
+
+
+.success-card h2 {
+    margin-top: 25px;
+
+    color: #ffd1df;
+}
+
+
+/* Restart */
 
 #restartBtn {
     margin-top: 30px;
@@ -250,62 +289,38 @@ button {
     background: white;
 }
 
+
 #restartBtn:hover {
-    transform: scale(1.08);
+    transform: scale(1.1);
+
+    background: #ff3366;
+
+    color: white;
 }
 
-/* Floating Hearts */
 
-.floating-heart {
-    position: fixed;
+/* =========================
+   MOBILE
+========================= */
 
-    bottom: -50px;
+@media (max-width: 600px) {
 
-    z-index: 1;
-
-    pointer-events: none;
-
-    animation:
-        floatUp linear forwards;
-}
-
-@keyframes floatUp {
-
-    0% {
-        transform:
-            translateY(0)
-            rotate(0deg);
-
-        opacity: 1;
+    .card {
+        padding: 30px 20px;
     }
 
-    100% {
-        transform:
-            translateY(-110vh)
-            rotate(360deg);
-
-        opacity: 0;
-    }
-}
-
-/* Mobile */
-
-@media (max-width: 500px) {
-
-    .proposal-card {
-        padding: 35px 20px;
-    }
-
-    h1 {
-        font-size: 32px;
-    }
-
-    .heart {
+    .big-heart {
         font-size: 65px;
     }
 
-    .message {
-        font-size: 15px;
+    .card h1,
+    .success-card h1 {
+        font-size: 34px;
+    }
+
+    .card p,
+    .success-card p {
+        font-size: 16px;
     }
 
     .buttons {
@@ -313,8 +328,10 @@ button {
     }
 
     button {
-        padding: 12px 22px;
+        padding: 13px 24px;
+    }
 
-        font-size: 15px;
+    .ring {
+        font-size: 75px;
     }
 }
